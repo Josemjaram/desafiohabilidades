@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Estudiante;
-import com.example.demo.repository.Estudianterepository;
+import com.example.demo.repository.EstudianteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,9 +9,9 @@ import java.util.List;
 @Service
 public class EstudianteService {
 
-    private final Estudianterepository repository;
+    private final EstudianteRepository repository;
 
-    public EstudianteService(Estudianterepository repository) {
+    public EstudianteService(EstudianteRepository repository) {
         this.repository = repository;
     }
 
