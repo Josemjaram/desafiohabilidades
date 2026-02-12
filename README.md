@@ -23,26 +23,46 @@ La persistencia se implementó **en memoria** mediante una lista, cumpliendo con
 
 ---
 
-### Primero Clonar el repositorio
+## Cómo ejecutar el proyecto
+
+### 1️ Clonar el repositorio
 
 ```bash
-git clone <https://github.com/Josemjaram/desafiohabilidades.git>
+git clone https://github.com/Josemjaram/desafiohabilidades.git
+```
 
 ---
 
-###Segundo
-cd demo
+### 2️ Entrar al proyecto
 
-###Tercero
+```bash
+cd desafiohabilidades
+```
 
-Mac:
+---
 
+### 3️ Ejecutar la aplicación
+
+#### Mac / Linux
+
+```bash
 ./gradlew bootRun
+```
 
-Windows:
+#### Windows
 
+```bash
 gradlew.bat bootRun
+```
 
-###Cuarto
-En cmd: curl -X POST http://localhost:8080/estudiantes ^ -H "Content-Type: application/json" ^ -d "{\"id\":\"47\",\"nombre\":\"Roberto\",\"carrera\":\"Ingeniería Química\"}"
+---
 
+### 4️ Probar endpoint POST
+
+En CMD:
+
+```bash
+curl -X POST http://localhost:8080/estudiantes ^
+-H "Content-Type: application/json" ^
+-d "{\"id\":\"47\",\"nombre\":\"Roberto\",\"carrera\":\"Ingeniería Química\"}"
+```
