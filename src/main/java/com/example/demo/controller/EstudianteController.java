@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Estudiante;
-import com.example.demo.repository.Estudianterepository;
+import com.example.demo.service.EstudianteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,37 +12,22 @@ import java.util.List;
 @RequestMapping("/estudiantes")
 public class EstudianteController {
 
-    private final Estudianterepository repository;
+    private final EstudianteService service;
 
-    public EstudianteController(Estudianterepository repository) {
-        this.repository = repository;
+    public EstudianteController(EstudianteService service) {
+        this.service = service;
     }
 
-    // =========================
-    // POST → Registrar
-    // =========================
     @PostMapping
     public ResponseEntity<?> registrar(@RequestBody Estudiante estudiante) {
 
-        // Validar duplicado
-        if (repository.buscarPorId(estudiante.getId()).isPresent()) {
-            return ResponseEntity
-                    .status(HttpStatus.CONFLICT)
-                    .body("Ya existe un estudiante con ese ID");
-        }
+        Estudiante nuevo = service.registrar(estudiante);
 
-        repository.guardar(estudiante);
-
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(estudiante);
+        return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
 
-    // =========================
-    // GET → Listar
-    // =========================
     @GetMapping
     public ResponseEntity<List<Estudiante>> listar() {
-        return ResponseEntity.ok(repository.listar());
+        return ResponseEntity.ok(service.listar());
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class Estudianterepository {
+public class EstudianteRepository {
 
     // Lista en memoria
     private List<Estudiante> estudiantes = new ArrayList<>();
